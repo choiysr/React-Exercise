@@ -16,11 +16,19 @@ class Hello2 extends Component {
         this.state = { count: 1 }
     }
 
-    handleClick = () => {
+    handleClick = (calNo) => {
         console.log("CLICK")
         // state는 불변(immutable). so 그냥 ++ 하는 것이 아니라 
         // setState 이후 얘를 가지고 iv로 유지해줘! 라는 문법으로 써야함 
         this.setState({count: ++ this.state.count})
+     /*    switch (calNo) {
+            case 1:
+                this.setState({count: ++ this.state.count})
+                break;
+            default:
+                this.setState({count: -- this.state.count})
+                break;
+        } */
     }
 
     render() {
