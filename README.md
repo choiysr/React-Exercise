@@ -8,4 +8,11 @@
 
 ### day1 folder : 함수형 컴포넌트, 클래스형 컴포넌트 복습, Hook의 이해 
 
+what is hooks? 
+react 버전 16.8에 새로 도입됨.
+"class를 작성할 필요 없이"  함수형 컴포넌트가 상태를 유지할 수 있게끔 바뀜. 
+함수형 컴포넌트에 useState를 쓰면 됨. 
+
 ### Quiz folder : Hook을 이용한 퀴즈 application 
+
+
