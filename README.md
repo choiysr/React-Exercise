@@ -14,5 +14,8 @@ react 버전 16.8에 새로 도입됨. <br>
 함수형 컴포넌트에 useState를 쓰면 됨. 
 
 ### Quiz folder : Hook을 이용한 퀴즈 application 
+[POINT]
+- 태그의 ID를 가져오는 법
+- use jQuery with react 
 
 
