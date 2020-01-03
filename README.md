@@ -17,5 +17,6 @@ react 버전 16.8에 새로 도입됨. <br>
 [POINT]
 - 태그의 ID를 가져오는 법
 - use jQuery with react 
+ : jQuery 라이브러리를 가져오면 window에 추가됨. 
 
 
