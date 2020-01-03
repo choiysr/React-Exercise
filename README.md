@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2020-01-02 ~ 
 
 ## React Example in class 
 
