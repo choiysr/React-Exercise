@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import Hello from './components/Hello';
 import HelloBox from './components/HelloBox';
+import CountComponent from './components/day1/CountComponent';
+import CountHookComponent from './components/day1/CountHookComponent';
 
 function App() {
 
@@ -13,13 +15,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <HelloBox></HelloBox>
+        <CountHookComponent></CountHookComponent>
+        {/* <CountComponent></CountComponent> */}
+       {/*  <img src={logo} className="App-logo" alt="logo" />
+        <HelloBox></HelloBox> */}
        {/*  <Hello name={`Hong`} fn={showName}></Hello>
         <Hello name={`Kim`} fn={showName}></Hello> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      
         <a
           className="App-link"
           href="https://reactjs.org"

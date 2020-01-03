@@ -50,5 +50,8 @@ const Hello = ({name, fn}) => {
     return (<h1 onClick ={()=>{fn(name)}}>Hello : {name}</h1>)
 }
 
+
+
+
 // 외부에서 쓰려면 Export 필수. 없으면 import가 안됨. 
 export default Hello
