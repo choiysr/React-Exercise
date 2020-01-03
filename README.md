@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## React Example in class 
 
-In the project directory, you can run:
+예제를 이용한 함수형 컴포넌트와 클래스형 컴포넌트의 이해, Hook의 사용법
 
 ### `npm start`
 
