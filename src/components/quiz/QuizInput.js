@@ -21,7 +21,8 @@ const QuizInput = ({fn}) => {
         const obj = document.querySelector('#uInput')
         console.log("input태그의 ID값을 가져올 수 있을까요? : " + obj.value) // 가능! 
         const jQueryObj = jQuery("#uInput")
-        console.log("jQuery를 사용할 수 있을까요? : " + jQueryObj.val())
+        console.log("jQuery를 사용할 수 있을까요? : " + jQueryObj.val()) // 가능!
+        // react에서는 DOM Object에 접근할 필요가 있을때 사용하기 위해 ref가 있다.
         fn(text)
         setText('')
     }

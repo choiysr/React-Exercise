@@ -9,6 +9,7 @@ class CountComponent extends Component {
         this.state = { count: 1 }
     }
 
+    // 람다를 사용하면 this의 범위가 달라진다. 
     changeCount = (amount) => {
         console.log(this)
         this.setState({count: this.state.count + amount})
@@ -24,6 +25,5 @@ class CountComponent extends Component {
         )
     }
 }
-
 
 export default CountComponent
