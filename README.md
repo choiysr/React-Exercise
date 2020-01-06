@@ -10,6 +10,7 @@
 
 ### 4.(0106)day3 folder : KIOSK 시스템과 axios를 이용한 ajax통신(&비동기처리)
  
+![itemtest](https://user-images.githubusercontent.com/48176963/71797961-9ff23d80-3093-11ea-9a18-10d6d16626bb.png)
 
   
 
