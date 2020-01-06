@@ -8,7 +8,7 @@
 
 ### 3.(0103)Quiz folder : Hook을 이용한 퀴즈 application 
 
-### 4.(0106)day3 folder : KIOSK 시스템과 axios를 이용한 ajax통신(&비동기처리)
+### 4.(0106)day3 folder : KIOSK 시스템과 axios를 이용한 서버통신(&비동기처리)
 ![item](https://user-images.githubusercontent.com/48176963/71798076-08d9b580-3094-11ea-8b3b-4e2c8177b37a.png)
 
 
