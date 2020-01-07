@@ -5,7 +5,7 @@ const Todo = ({todo, oper}) => {
 
         // style을 객체로 만들어 보기
         const styleDone = {
-            backgroundColor: "skyBlue",
+            backgroundColor: "white",
             textDecoration : 'line-through'
         }
 
