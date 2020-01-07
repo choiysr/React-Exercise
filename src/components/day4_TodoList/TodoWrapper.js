@@ -31,6 +31,9 @@ const TodoWrapper = () => {
 
     const updateDone = (tno) => {
         console.log('updateDone...'+tno)
+        // 기본적으로 배열로 나오기때문에 [0]번째로 설정 
+        const target = todos.filter(t=> t.tno === tno)[0]
+        target.done = !target.done
     }
 
     // 객체는 key-value로 보내야 하지만 최근 javascript는 그렇게 하지 않고 축약형으로 쓸 수 있음
