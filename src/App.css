@@ -44,6 +44,17 @@
   text-align: center;
 }
 
+.menu {
+  margin-bottom: 2em;
+
+}
+
+.menu span {
+  margin-left: 1em;
+  font-size: 1.5em;
+  background-color: darkgrey;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

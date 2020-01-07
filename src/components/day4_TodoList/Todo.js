@@ -20,7 +20,7 @@ const Todo = ({todo, oper}) => {
         }
 
         // TodoWrapper한테 '삭제해줘'라고 전달해야함
-        // before to do : todowrapper에서 ref를 물어야하니까 wrapper쪽에서 먼저 function을 전달해줘야함 > list로 
+        // before to do : todowrapper에서 레퍼런스를 물어야하니까 wrapper쪽에서 먼저 function을 전달해줘야함 > list로 
         const handleClick = () => {
             console.log("delete Click")
             oper.deleteTodo(todo.tno)
