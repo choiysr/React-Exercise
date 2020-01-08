@@ -14,7 +14,7 @@
 ### 5.(0107)day4_TodoList folder : TO-DO LIST 만들기 (without 서버통신, 저장기능(x)) 
 ![todolist](https://user-images.githubusercontent.com/48176963/71873318-37be5d00-3162-11ea-9fe8-cb367cf6357b.png)
 
-### 6.(0108)day5_TodoList folder : 간단한 게시판(리스트/등록/삭제) 만들기 (ajax 서버(boot)통신, Map API Component처리) 
+### 6.(0108)src/mudules & src/components/ folder : TO-DO LIST upgraded (서버통신, Map API Component처리, await,async개념) 
   
   
   
@@ -62,7 +62,15 @@
 - useEffect : 컴포넌트가 렌더링 될 때마다 특정 작업을 수행하도록 설정 가능.(렌더링 직후 작업을 설정)<br>
   : 렌더링 될때마다 실행 되므로 여러번의 렌더링이 일어나면 여러번 수행됨. > 컴포넌트가 화면에 가장 처음 렌더링 될 때 한번만 실행되게 하려면 두번째 파라미터로 빈 배열을 삽입.  <br>
    cf.)useEffect(()=> {},[])  <br>
-
+   
+   
+### promise, async/await
+: 자바스크립트는 싱글 스레드 프로그래밍 언어로 비동기처리가 필수적이다.<br>
+: 비동기처리의 경우 결과가 언제 나올지 모르기 때문에 그것을 우리가 직접 모니터링(옵저버)해주다가 결과가 반환되면 assign해줘야 한다. 일일이 모니터링 해주는 법 밖엔 없을까? 이 문제는 어떻게 해결할까? > 동기식으로 처리하는 기법이 필요하다 <br>
+: before : callBack으로 처리(내가 니한테 일을 맡기는 형식-'그게 다 끝나면 이 함수 실행해줘~')<br>
+: after :  p,a로 처리(니가 일을 끝내면 내가 일을 하는 형식-'니가 이렇게 해주면 내가 이렇게 할게')<br>
+: 비동기를 동기적으로 "완벽하게" 처리해줄 순 없다! <br>
+  1) promise : '지연'이라고 생각 -> 다 읽으면 return해! -> 실행이 완료되면 어떤 동작을 하게끔 '약속(보장)'해주는 것이 promise의 개념이다. 따라서 promise이후에 .then() 문법으로 실행이 완료 되면, 그러면(then) 이걸 실행해.<br> 
   
 
 
