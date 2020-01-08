@@ -11,10 +11,10 @@
 ### 4.(0106)day3 folder : KIOSK 시스템과 axios를 이용한 서버통신(&비동기처리)
 ![item](https://user-images.githubusercontent.com/48176963/71798076-08d9b580-3094-11ea-8b3b-4e2c8177b37a.png)
 
-### 5.(0107)day4_TodoList folder : TO-DO LIST 
+### 5.(0107)day4_TodoList folder : TO-DO LIST 만들기 (without 서버통신, 저장기능(x)) 
 ![todolist](https://user-images.githubusercontent.com/48176963/71873318-37be5d00-3162-11ea-9fe8-cb367cf6357b.png)
 
-
+### 6.(0108)day5_TodoList folder : 간단한 게시판(리스트/등록/삭제) 만들기 (ajax 서버(boot)통신, Map API Component처리) 
   
   
   
