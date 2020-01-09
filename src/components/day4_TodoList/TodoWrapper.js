@@ -35,7 +35,7 @@ const TodoWrapper = () => {
         console.log('updateDone...'+tno)
         // 기본적으로 배열로 나오기때문에 [0]번째로 설정
         const target = todos.filter(t=> t.tno === tno)[0]
-        target.done = !target.done
+        target.done = !target.done 
         // 여기서 바로 setTodos(todos) 한다면 화면에 변경(line-through)이 일어나지 x
         const newTodos = todos.slice() // 깊은 복사 
         setTodos(newTodos)

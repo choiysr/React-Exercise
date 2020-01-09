@@ -55,6 +55,14 @@
   background-color: darkgrey;
 }
 
+.listUl{
+  list-style: none;
+}
+.listUl li {
+  font-size: 20px;
+  border-color: black;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
