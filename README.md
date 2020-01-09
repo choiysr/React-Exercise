@@ -15,7 +15,7 @@
 ![todolist](https://user-images.githubusercontent.com/48176963/71873318-37be5d00-3162-11ea-9fe8-cb367cf6357b.png)
 
 ### 6.(0108~10)src/mudules & src/components/ folder : TO-DO LIST upgraded (서버통신, js비동기처리 패턴) 
-  
+![react_todolist](https://user-images.githubusercontent.com/48176963/72044803-17c0a200-32f8-11ea-9f05-d22e4e917327.png)
   
   
 ------------------------------------------------------------------------------------------------
