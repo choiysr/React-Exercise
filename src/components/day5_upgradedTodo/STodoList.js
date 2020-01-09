@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { getServerData } from "../../modules/stodo";
+import STodo from './STodo';
 
 const STodoList = ({ listData, pageInfo, changePageNum }) => {
 
@@ -34,7 +35,7 @@ const STodoList = ({ listData, pageInfo, changePageNum }) => {
          console.log("use Effect.....")
      }, []) */
 
-    const list = listData.map(todo => <li key={todo.tno}><b>{todo.tno}&nbsp;</b>{todo.title}</li>)
+    const list = listData.map(todo => <li key={todo.tno}><STodo todo={todo} changePageNum={changePageNum}></STodo></li>)
 
     return (
         <div>

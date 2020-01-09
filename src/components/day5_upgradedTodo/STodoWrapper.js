@@ -19,7 +19,6 @@ const STodoWrapper = () => {
     // page가 바뀌면(렌더링이 되어야하니까) so, 상태를 바꿔줘야함 > state필요! > 이걸 STodoList에 날려줌 
     //const [page, setPage] = useState({num:1})
 
-
     const [listData,setListData] = useState([])
     const [pageInfo, setPageInfo] = useState({})
 
@@ -40,6 +39,7 @@ const STodoWrapper = () => {
             setPageInfo(res.pageInfo)
         })
     }
+
 
     return (
         <div>

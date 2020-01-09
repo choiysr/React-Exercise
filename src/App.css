@@ -60,7 +60,11 @@
 }
 .listUl li {
   font-size: 20px;
-  border-color: black;
+}
+
+.tno {
+  font-style: oblique;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {

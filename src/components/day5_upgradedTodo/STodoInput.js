@@ -4,7 +4,10 @@ import {addToServer} from "../../modules/stodo";
 const STodoInput = ({changePageNum}) => {
 
     const [title,setTitle] = useState('')
-    const [targetDate,setTargetDate] = useState('2020-01-08')
+/*     let today = new Date()
+    let defaultdate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+    console.log(defaultdate)  왜 안되지?*/
+    const [targetDate,setTargetDate] = useState('2020-01-09')
     const handleClick = () => {
         addToServer(title,targetDate).then((response)=> {
             console.log(response)
