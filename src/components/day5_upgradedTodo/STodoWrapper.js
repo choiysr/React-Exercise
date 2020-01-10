@@ -6,6 +6,10 @@ import {getServerData} from "../../modules/stodo";
 
 const STodoWrapper = () => {
 
+    // 결론 : 함수형컴포넌트 본래 목적인 '프레젠테이션'(뿌려주는역할)을 생각하자 
+    // 결국 STodoList는 리스트를 뿌려주는 역할만 하고 통신은 Wrapper가 담당 
+
+
     // 여기에 있을 필요가 없음!
     // 컴포넌트와 컴포넌트간의 통신을 최대한 안할 수 있도록
     // 자기가 할 수 있는일은 자기가 처리하게 > STodoList로 옮기자 

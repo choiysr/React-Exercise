@@ -2,8 +2,11 @@ import React from 'react';
 import './App.css';
 import {addToServer} from './modules/stodo'
 import STodoWrapper from './components/day5_upgradedTodo/STodoWrapper';
+import MapComponent from './components/mapcomp/Mapcomponent';
+import MapWrapper from './components/mapcomp/MapWrapper';
 
 function App() {
+
 
   /* const showName = (value) => {
     alert("Hello : "+value)
@@ -60,7 +63,10 @@ function App() {
   return (
     <div className="App">
 
-      <STodoWrapper></STodoWrapper>
+      <MapWrapper></MapWrapper>
+
+
+      {/* <STodoWrapper></STodoWrapper> */}
 
         {/* <TodoWrapper></TodoWrapper> */}
 

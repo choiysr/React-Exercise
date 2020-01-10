@@ -67,6 +67,20 @@
   font-weight: bold;
 }
 
+.pointsUl {
+  list-style: none;
+}
+
+.pointsUl li {
+  font-size: 20px;
+  text-align: left;
+  margin-left: 40vw;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
