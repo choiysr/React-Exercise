@@ -14,13 +14,12 @@
 ### 5.(0107)day4_TodoList folder : TO-DO LIST 만들기 (without 서버통신, 저장기능(x)) 
 ![todolist](https://user-images.githubusercontent.com/48176963/71873318-37be5d00-3162-11ea-9fe8-cb367cf6357b.png)
 
-### 6.(0108)src/mudules & src/components/ folder : TO-DO LIST upgraded (서버통신, Map API Component처리, await,async개념) 
-  
+### 6.(0108~10)src/mudules & src/components/ folder : TO-DO LIST upgraded (서버통신, js비동기처리 패턴) 
+![react_todolist](https://user-images.githubusercontent.com/48176963/72044803-17c0a200-32f8-11ea-9f05-d22e4e917327.png)
   
   
 ------------------------------------------------------------------------------------------------
- 
-   
+  
    
     
    
@@ -64,13 +63,15 @@
    cf.)useEffect(()=> {},[])  <br>
    
    
-### promise, async/await
+### 자바스크립트 비동기 처리 패턴
 : 자바스크립트는 싱글 스레드 프로그래밍 언어로 비동기처리가 필수적이다.<br>
-: 비동기처리의 경우 결과가 언제 나올지 모르기 때문에 그것을 우리가 직접 모니터링(옵저버)해주다가 결과가 반환되면 assign해줘야 한다. 일일이 모니터링 해주는 법 밖엔 없을까? 이 문제는 어떻게 해결할까? > 동기식으로 처리하는 기법이 필요하다 <br>
+: 비동기처리의 경우 결과가 언제 나올지 모르기 때문에 그것을 우리가 직접 모니터링해주다가 결과가 반환되면 assign해줘야 한다. 일일이 모니터링 해주는 법 밖엔 없을까? 이 문제는 어떻게 해결할까? > 동기식으로 처리하는 기법이 필요하다 <br>
 : before : callBack으로 처리(내가 니한테 일을 맡기는 형식-'그게 다 끝나면 이 함수 실행해줘~')<br>
-: after :  p,a로 처리(니가 일을 끝내면 내가 일을 하는 형식-'니가 이렇게 해주면 내가 이렇게 할게')<br>
-: 비동기를 동기적으로 "완벽하게" 처리해줄 순 없다! <br>
-  1) promise : '지연'이라고 생각 -> 다 읽으면 return해! -> 실행이 완료되면 어떤 동작을 하게끔 '약속(보장)'해주는 것이 promise의 개념이다. 따라서 promise이후에 .then() 문법으로 실행이 완료 되면, 그러면(then) 이걸 실행해.<br> 
+: after :  비동기처리 패턴으로 처리(니가 일을 끝내면 내가 일을 하는 형식-'니가 이렇게 해주면 내가 이렇게 할게')<br>
+: ~~그러나 비동기를 동기적으로 "완벽하게" 처리해줄 순 없다~~<br>
+  1) **promise** : '지연'이라고 생각 -> 다 읽으면 return해! -> 실행이 완료되면 어떤 동작을 하게끔 '약속(보장)'해주는 것이 promise의 개념이다. 따라서 promise이후에 .then() 문법으로 실행이 완료 되면, 그러면(then) 이걸 실행해.<br> 
+             : promise 객체의 인자에는 resolve function과 reject function이 있다. then에서 넘겨진 function은 promise의 resolve에서 실행된다. -> then에서 function을 넘겨주고, 해당 function이 resolve임. then을 계속 사용하기 위해서는 new Promise를 계속 반환해줘야 하는 문제가 있음. > 그럼 동기프로그래밍을 하기 위해 항상 then을 사용해야 하는데... 게다가 then바깥에서는 여전히 비동기 프로그래밍 방식으로 실행이 된다. > 그래서 나온 개념이 **async/await!** <br>
+  2) **async/await** : promise로 반환하는 것들 앞에 await을 붙여서 비동기로 실행되는 것들을 끝날 때 까지 기다리는 형태의 패턴. 
   
 
 
