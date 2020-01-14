@@ -16,6 +16,8 @@
 
 ### 6.(0108~10)src/mudules & src/components/ folder : TO-DO LIST upgraded (서버통신, js비동기처리 패턴) 
 ![react_todolist](https://user-images.githubusercontent.com/48176963/72044803-17c0a200-32f8-11ea-9f05-d22e4e917327.png)
+
+### 7.(0114~)src/components/day6_TodoWithRouter & src/pages folder : 라우터를 이용한 TodoList(Page분기) 
   
   
 ------------------------------------------------------------------------------------------------
