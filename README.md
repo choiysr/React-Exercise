@@ -81,4 +81,32 @@
 
 
 
+### Context
+: context는 기존에 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할수 있다.<br>
+일반적인 React 애플리케이션에서 데이터는 부모->자식에게 props를 통해 전달되지만, 애플리케이션 안의 여러 컴포넌트들에 전해줘야 하는 props의 경우 이 과정이 번거롭다.<br>
+그러나 context를 이용하면, 트리 단계마다 명시적으로 props를 넘겨주지 않아도 많은 컴포넌트가 값을 공유할 수 있다. 
+
+* 주의할 점
+```js
+function App() {
+  return (
+   <div className="App">
+     <UserProvider>
+       <UserInfo></UserInfo>
+       <UserLogin></UserLogin>
+     </UserProvider>
+     <h1>DIVIDER</h1>
+     <UserProvider>
+     <MailList></MailList>
+     </UserProvider>
+  </div> 
+  );
+}
+```
+위와 같이 <UserProvider>을 분리하여 쓰게 되면, MailList는 위의 다른 UserProvider와는 같은 context를 공유하지 않는다. 실제로 updateUser 메서드를 실행했을때 MailList가 갱신이 안되는 걸 확인할 수 있다. <br>
+결론 : 이렇게 분리해서 쓸 수 없다. <br>
+또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider를 넣어야하는데 이렇게 되면 구조가 복잡해진다. > 이래서 나온 개념이 Redux! <br>
+
+
+
 
