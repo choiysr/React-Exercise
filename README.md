@@ -103,9 +103,10 @@ function App() {
   );
 }
 ```
-위와 같이 <UserProvider>을 분리하여 쓰게 되면, MailList는 위의 다른 UserProvider와는 같은 context를 공유하지 않는다. 실제로 updateUser 메서드를 실행했을때 MailList가 갱신이 안되는 걸 확인할 수 있다. <br>
+위와 같이 <UserProvider>을 분리하여 쓰게 되면, MailList는 위의 다른 UserProvider와는 같은 context를 공유하지 않는다.실제로 updateUser 메서드를 실행했을때 MailList가 갱신이 안되는 걸 확인할 수 있다. <br>
 결론 : 이렇게 분리해서 쓸 수 없다. <br>
-또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider를 넣어야하는데 이렇게 되면 구조가 복잡해진다. > 이래서 나온 개념이 Redux! <br>
+또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider를 넣어야하는데 이렇게 되면 구조가 복잡해진다. <br> 
+-> 이래서 나온 개념이 Redux! <br>
 
 
 
