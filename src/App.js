@@ -1,89 +1,83 @@
 import React from 'react';
 import './App.css';
-import {addToServer} from './modules/stodo'
+import { addToServer } from './modules/stodo'
 import STodoWrapper from './components/day5_upgradedTodo/STodoWrapper';
 import MapComponent from './components/mapcomp/Mapcomponent';
 import MapWrapper from './components/mapcomp/MapWrapper';
+import Page1 from './pages/Page1';
+import Page2 from './pages/Page2';
+import Page3 from './pages/Page3';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import TodoPage from './pages/TodoPage';
+import UserProvider from './providers/UserProvider';
+import UserInfo from './components/day7_User/UserInfo';
+import UserLogin from './components/day7_User/UserLogin';
+import MailList from './components/day7_User/MailList';
+
 
 function App() {
 
-
-  /* const showName = (value) => {
-    alert("Hello : "+value)
-  } */
-
-  /*   const qarr1 = [
-      { title:"Quiz 1", answer:"1" },
-      { title:"Quiz 2", answer:"2" },
-      { title:"Quiz 3", answer:"3" },
-      { title:"Quiz 4", answer:"4" },
-      { title:"Quiz 5", answer:"5" }
-  ]
-  
-  const qarr2 = [
-    { title:"Second Quiz 1", answer:"1" },
-    { title:"Second Quiz 2", answer:"2" },
-    { title:"Second Quiz 3", answer:"3" },
-    { title:"Second Quiz 4", answer:"4" },
-    { title:"Second Quiz 5", answer:"5" }
-  ] */
-
-  /* const arr = [
-    {pno:1, pname:"01", price:3000, amount:0},
-    {pno:2, pname:"02", price:4000, amount:0},
-    {pno:3, pname:"03", price:5000, amount:0},
-    {pno:4, pname:"04", price:8000, amount:0},
-    {pno:5, pname:"05", price:9000, amount:0}
-  ] */
-
-
-  // ----------1 
-  // 비동기 호출을 했는데 동기화된 코드(result에 담아주니까). 과연?  
-  //const result = getServerData() 
-  //console.log(result)
-  // 이렇게 되면 promise객체가 제일 먼저 찍힘.
-  // 동기화된 코드처럼 보이지만 실제로 동기화된 동작을 하진 않음.
-
-  // ----------2(실행은 되겠지만 result에 담을 순 없음.)
-  //getServerData().then(obj=>console.log(obj));
- 
-  // ----------3 (thridResult => undifine 비동기 문제 발생)
-  //let thirdResult
-  //getServerData().then(obj=>thirdResult = obj);
-  //console.log(thirdResult)
-
-  // ----------4 (함수가 반환됨)
-  //let fresult = async () => {
-/*     await getServerData().then(obj => {
-      return obj 
-    })
-  } */
-
-
   return (
-    <div className="App">
+   <div className="App">
+     <UserProvider>
+       <UserInfo></UserInfo>
+       <UserLogin></UserLogin>
+     </UserProvider>
+     <h1>DIVIDER</h1>
+     <UserProvider>
+     <MailList></MailList>
+     </UserProvider>
 
-      <MapWrapper></MapWrapper>
+    {/* 이렇게 분리하게 되면 MailList는 위의 UserProvider와는 같은 context를 공유하지 않는다. */}
+    {/* updateUser을 했을때 MailList가 갱신이 안되는걸 확인할 수 있음.  */}
+
+    {/* 또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider을 넣어야함
+    -> 구조가 복잡해짐 -> 이래서 나온 개념이 redux */}
 
 
-      {/* <STodoWrapper></STodoWrapper> */}
-
-        {/* <TodoWrapper></TodoWrapper> */}
-
-        {/* ============================ */}
-        {/*  <img src={logo} className="App-logo" alt="logo"></img>
-        <SWTest></SWTest> */}
-        {/* <ItemComponent arr={arr}></ItemComponent> */}
-        {/* <LoopEx></LoopEx> */}
-        {/* <QuizComponent quizArr={qarr1}></QuizComponent> */}
-        {/*  <CountHookComponent></CountHookComponent> */}
-        {/* <CountComponent></CountComponent> */}
-        {/*  <HelloBox></HelloBox> */}
-        {/*  <Hello name={`Hong`} fn={showName}></Hello>
-        <Hello name={`Kim`} fn={showName}></Hello> */}
-
-    </div>
+    {/* 20.01.14  
+     <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Page1</Link>
+          </li>
+          <li>
+            <Link to="/page2">Page2</Link>
+          </li>
+          <li>
+            <Link to="/page3">Page3</Link>
+          </li>
+          <li>
+            <Link to="/todo">Todo</Link>
+          </li>
+        </ul>
+      </nav>
+      <Switch>
+          <Route path="/page2">
+            <Page2 />
+          </Route>
+          <Route path="/page3">
+            <Page3 />
+          </Route>
+          <Route path="/todo">
+            <TodoPage />
+          </Route>
+          <Route path="/">
+            <Page1 />
+          </Route>
+        </Switch>
+        </Router> */}
+    </div> 
+ 
   );
 }
 
 export default App;
+

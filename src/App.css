@@ -79,6 +79,22 @@
 }
 
 
+.page-wrapper {
+  background-color: cadetblue;
+  width: 60vw;
+  height: 60vh;
+  text-align: left;
+}
+
+.page-wrapper ul {
+  list-style: none;
+}
+
+.page-wrapper li{
+text-align: left;
+} 
+
+
 
 
 @keyframes App-logo-spin {
