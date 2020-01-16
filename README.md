@@ -21,7 +21,9 @@
 
 ### 8.(0115)src/components/day7_User & src/providers folder : Context(Provider) 사용해보기 
 
-### 9.(0116)src/components/day8_Redux & src/reducers folder: redux, react-redux 
+### 9.(0116)src/components/day8_Redux & src/reducers folder: redux, react-redux
+![image](https://user-images.githubusercontent.com/48176963/72490361-6c18d400-385a-11ea-95ef-da06f9c0557c.png)
+
   
   
 ------------------------------------------------------------------------------------------------
@@ -160,8 +162,8 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 ```
-: 이 상태로 실행하게 되면 countReducer가 실행된다. <br>
-: 컴포넌트가 리덕스의 영향을 받고 싶으면 이야기를 해줘야함. '나는 Store랑 연결되어 있어!' > Connect !  <br>
+이 상태로 실행하게 되면 countReducer가 실행된다. <br>
+컴포넌트가 리덕스의 영향을 받고 싶으면 이야기를 해줘야함. '나는 Store랑 연결되어 있어!' > Connect !  <br>
 
 [3] 컴포넌트를 만들어 : 컴포넌트가 store를 쓰려면 connect를 써야함.  <br>
 
@@ -180,7 +182,7 @@ return(
 export default connect()(CountDisplay)
 ```
 
-: 이렇게 실행하게 되면 <br>
+이렇게 실행하게 되면 <br>
 ![image](https://user-images.githubusercontent.com/48176963/72487691-2d7f1b80-3852-11ea-9378-0153e1f7c8d4.png)
 
 Connect하면 Dispatch(함수)가 생김. Dispatch로 action을 전달 할 수 있고 action은 Reducer를 실행시킨다. <br>
