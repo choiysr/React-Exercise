@@ -110,14 +110,14 @@ function App() {
 
 
 ### Redux
+: 모든 컴포넌트가 '전역적으로' 유지해야 하는 상태.  
 : 시작전 npm install --save redux react-redux <br>
 : react를 시작할때 제일먼저 알아야 할 것 -> Reducer(이벤트핸들러 같은, 이벤트를 처리해주는)
 : Reducer는 전체 컨텍스트를 제어하는 단순 함수(모든 함수는 return이 있다) > 이 함수의 입력,출력값을 뭘까? <br>
  - 입력값 : state, action(어떠한 정보를 어떻게 처리할 것인지)<br>
  - 출력값 : 최종적으로 유지할 state(immutable) <br>
  
- [1] Reducer를 만들어라 
-: Reducer 준비 (countReducer.js) 
+ [1] Reducer를 만들어라 : Reducer 준비 (countReducer.js) <br>
 
 ```js
 // reducer는 순수함수. 
@@ -132,8 +132,7 @@ function countReducer(state = initState,action){
 }
 export default countReducer
 ```
-[2] Store을 만들어라
-: index.js 수정(App.js의 상위)
+[2] Store을 만들어라 : index.js 수정(App.js의 상위) <br>
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -161,8 +160,10 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 ```
-: 이 상태로 실행하게 되면 countReducer가 실행된다. 
-: 컴포넌트가 리덕스의 영향을 받고 싶으면 이야기를 해줘야함. '나는 Store랑 연결되어 있어!' > Connect ! 
+: 이 상태로 실행하게 되면 countReducer가 실행된다. <br>
+: 컴포넌트가 리덕스의 영향을 받고 싶으면 이야기를 해줘야함. '나는 Store랑 연결되어 있어!' > Connect !  <br>
+
+[3] 컴포넌트를 만들어 : 컴포넌트가 store를 쓰려면 connect를 써야함.  <br>
 
 ```js
 import React from 'react'
@@ -179,4 +180,22 @@ return(
 export default connect()(CountDisplay)
 ```
 
-: 이렇게 실행하게 되면 
+: 이렇게 실행하게 되면 <br>
+![image](https://user-images.githubusercontent.com/48176963/72487691-2d7f1b80-3852-11ea-9378-0153e1f7c8d4.png)
+
+Connect하면 Dispatch(함수)가 생김 Dispatch로 action을 전달 할 수 있고 action은 Reducer를 실행시킨다. <br>
+
+```js
+const mapStateToProps = (state) => {
+// state가 들어오면 나는 어떤 property로 바꿔줄건지  
+    console.log("mapStateToProps is running....", state)
+    return state
+}
+
+// mapStateToProps를 넣기 전에는 dispatch만 생김(보낼때 생기는것)
+// mapStateToProps를 넣으면 이 함수에 의해 파라미터로 들어오는 state가 props의 peroperty가 된다. 
+export default connect(mapStateToProps)(CountDisplay)
+```
+
+: mapStateToProps를 connect로 전달해주면, 
+
