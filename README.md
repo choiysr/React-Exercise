@@ -20,6 +20,8 @@
 ### 7.(0114)src/components/day6_TodoWithRouter & src/pages folder : 라우터를 이용한 TodoList(Page분기) 
 
 ### 8.(0115)src/components/day7_User & src/providers folder : Context(Provider) 사용해보기 
+
+### 9.(0116)src/components/day8_Redux & src/reducers folder: redux, react-redux 
   
   
 ------------------------------------------------------------------------------------------------
@@ -78,9 +80,6 @@
   2) **async/await** : promise로 반환하는 것들 앞에 await을 붙여서 비동기로 실행되는 것들을 끝날 때 까지 기다리는 형태의 패턴. 
   
 
-
-
-
 ### Context
 : context는 기존에 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할수 있다.<br>
 일반적인 React 애플리케이션에서 데이터는 부모->자식에게 props를 통해 전달되지만, 애플리케이션 안의 여러 컴포넌트들에 전해줘야 하는 props의 경우 이 과정이 번거롭다.<br>
@@ -104,10 +103,80 @@ function App() {
 }
 ```
 위와 같이 UserProvider Context를 분리하여 쓰게 되면, MailList는 위의 다른 UserProvider와는 같은 context를 공유하지 않는다.실제로 updateUser 메서드를 실행했을때 MailList가 갱신이 안되는 걸 확인할 수 있다. <br>
-결론 : 이렇게 분리해서 쓸 수 없다. <br>
+결론 : 이렇게 분리해서 쓸 수 없다. > 지역적인 context. <br>
 또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider를 넣어야하는데 이렇게 되면 구조가 복잡해진다. <br> 
 -> 이래서 나온 개념이 Redux! <br>
 
 
 
+### Redux
+: 시작전 npm install --save redux react-redux <br>
+: react를 시작할때 제일먼저 알아야 할 것 -> Reducer(이벤트핸들러 같은, 이벤트를 처리해주는)
+: Reducer는 전체 컨텍스트를 제어하는 단순 함수(모든 함수는 return이 있다) > 이 함수의 입력,출력값을 뭘까? <br>
+ - 입력값 : state, action(어떠한 정보를 어떻게 처리할 것인지)<br>
+ - 출력값 : 최종적으로 유지할 state(immutable) <br>
+ 
+ [1] Reducer를 만들어라 
+: Reducer 준비 (countReducer.js) 
 
+```js
+// reducer는 순수함수. 
+
+// 맨 처음에 내가 유지해야하는 값. undefined면 안되니까. 
+const initState = {count:0} 
+// 만약 state에 해당하는 파라미터가 있다면 그것을 쓰고, 아니면 기본 파라미터로 initState를 써라 
+function countReducer(state = initState,action){
+    console.log("countRedcuer is running..." , state, action)
+    // do somthing    
+    return state
+}
+export default countReducer
+```
+[2] Store을 만들어라
+: index.js 수정(App.js의 상위)
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import countReducer from "./reducers/countReducer"
+
+// 이  store는 모든 action이 발생하면 countRedcuer로 간다. 
+const store = createStore(countReducer)
+
+ReactDOM.render(
+    // Provider로 감싸 이 안의 내용(<app />)이 children이 된다. 
+    <Provider store={store}>
+        <App />
+    </Provider>
+    ,
+    document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+```
+: 이 상태로 실행하게 되면 countReducer가 실행된다. 
+: 컴포넌트가 리덕스의 영향을 받고 싶으면 이야기를 해줘야함. '나는 Store랑 연결되어 있어!' > Connect ! 
+
+```js
+import React from 'react'
+import {connect} from 'react-redux'
+
+const CountDisplay = (props) => {
+
+    console.log('CoutDisPlay : ', props)
+return(
+    <h1>COUNT</h1>
+)
+}
+
+export default connect()(CountDisplay)
+```
+
+: 이렇게 실행하게 되면 
