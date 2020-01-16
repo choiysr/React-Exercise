@@ -183,7 +183,7 @@ export default connect()(CountDisplay)
 : 이렇게 실행하게 되면 <br>
 ![image](https://user-images.githubusercontent.com/48176963/72487691-2d7f1b80-3852-11ea-9378-0153e1f7c8d4.png)
 
-Connect하면 Dispatch(함수)가 생김 Dispatch로 action을 전달 할 수 있고 action은 Reducer를 실행시킨다. <br>
+Connect하면 Dispatch(함수)가 생김. Dispatch로 action을 전달 할 수 있고 action은 Reducer를 실행시킨다. <br>
 
 ```js
 const mapStateToProps = (state) => {
@@ -197,5 +197,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(CountDisplay)
 ```
 
-: mapStateToProps를 connect로 전달해주면, 
+
 
