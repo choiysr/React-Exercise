@@ -19,29 +19,45 @@ import UserProvider from './providers/UserProvider';
 import UserInfo from './components/day7_User/UserInfo';
 import UserLogin from './components/day7_User/UserLogin';
 import MailList from './components/day7_User/MailList';
+import CountDisplay from './components/day8_Redux/CountDisplay';
+import CountButtons from './components/day8_Redux/CountButtons';
+import OddEvenDisplay from './components/day8_Redux/OddEvenDisplay';
+import CountButtons2 from './components/day8_Redux/CountButtons2';
+import CountWrapper from './components/day9_Counter/CountWrapper';
+import TodoWrapper from './components/day9_Todo/TodoWrapper';
 
 
 function App() {
 
   return (
-   <div className="App">
-     <UserProvider>
+    <div className="App">
+      <CountWrapper></CountWrapper>
+      <TodoWrapper></TodoWrapper>
+
+
+      {/*      <CountDisplay></CountDisplay>
+     <OddEvenDisplay></OddEvenDisplay>
+     <CountButtons></CountButtons>
+     <CountButtons2></CountButtons2>
+ */}
+
+      {/*      <UserProvider>
        <UserInfo></UserInfo>
        <UserLogin></UserLogin>
      </UserProvider>
      <h1>DIVIDER</h1>
      <UserProvider>
      <MailList></MailList>
-     </UserProvider>
+     </UserProvider> */}
 
-    {/* 이렇게 분리하게 되면 MailList는 위의 UserProvider와는 같은 context를 공유하지 않는다. */}
-    {/* updateUser을 했을때 MailList가 갱신이 안되는걸 확인할 수 있음.  */}
+      {/* 이렇게 분리하게 되면 MailList는 위의 UserProvider와는 같은 context를 공유하지 않는다. */}
+      {/* updateUser을 했을때 MailList가 갱신이 안되는걸 확인할 수 있음.  */}
 
-    {/* 또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider을 넣어야함
+      {/* 또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider을 넣어야함
     -> 구조가 복잡해짐 -> 이래서 나온 개념이 redux */}
 
 
-    {/* 20.01.14  
+      {/* 20.01.14  
      <Router>
       <nav>
         <ul>
@@ -74,8 +90,7 @@ function App() {
           </Route>
         </Switch>
         </Router> */}
-    </div> 
- 
+    </div>
   );
 }
 
