@@ -21,8 +21,11 @@
 
 ### 8.(0115)src/components/day7_User & src/providers folder : Context(Provider) 사용해보기 
 
-### 9.(0116)src/components/day8_Redux & src/reducers folder: redux, react-redux
+### 9.(0116)src/components/day8_Redux & src/reducers folder(/reducers/countReducer.js): redux, react-redux
 ![image](https://user-images.githubusercontent.com/48176963/72490361-6c18d400-385a-11ea-95ef-da06f9c0557c.png)
+
+### 10.(0117)src/components/day9_Counter,Todo & src/day9_reducers & src/actions folder: action이 많아지고 복잡해질 때 & 여러개의 reducer를 연결. useEffect 두번째 파라미터 사용 
+
 
   
   
@@ -199,5 +202,41 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(CountDisplay)
 ```
 
+### Redux remind 
+yesterday : reducer가 하나 = state가 하나 <br>
+today : reducer가 두개 = state가 두개 <br> 
+So, 컴포넌트에서 받을때 어떤 reducer의 state를 내가 받아야 하는지를 처리해야함. <br>
+
+store는 하나인데 reducer가 많다. 그럼 어떻게 처리 해야 될까? > action이 모든 reducer에게 다 뿌려짐 > 그럼 Reducer들은 이 action이 나에게 맞는 action인가? 구분해야함 > Reducer여러개를 묶어줌 (index.js에서 combineReducer사용) <br>
+countReducer.js
+```js
+const initState = {count:0}
+
+// 만약 state에 해당하는 파라미터가 있다면 그것을 쓰고, 아니면 기본 파라미터로 initState를 써라 
+export default function countReducer(state = initState, action) {
+
+    const {type, payload} = action
+
+    if(type !== "COUNTER") {
+        return state
+    }
+
+    if(payload ==='INC') {
+        return {count: state.count+1}
+    }else if(payload =='DEC'){
+        return {count: state.count-1}
+    }
+
+    console.log("IN countReducer.js...", action)
+
+    return state
+
+}
+}
+```
+reducer의 type이 'COUNTER'면 실행하는 countReducer 
 
 
+
+
+button을 누르면 action을 던져야 함 > Hooks를 사용해보자 > useDispach() <br>
