@@ -20,6 +20,13 @@
 ### 7.(0114)src/components/day6_TodoWithRouter & src/pages folder : 라우터를 이용한 TodoList(Page분기) 
 
 ### 8.(0115)src/components/day7_User & src/providers folder : Context(Provider) 사용해보기 
+
+### 9.(0116)src/components/day8_Redux & src/reducers folder(/reducers/countReducer.js): redux, react-redux
+![image](https://user-images.githubusercontent.com/48176963/72490361-6c18d400-385a-11ea-95ef-da06f9c0557c.png)
+
+### 10.(0117)src/components/day9_Counter,Todo & src/day9_reducers & src/actions folder: action이 많아지고 복잡해질 때 & 여러개의 reducer를 연결. useEffect 두번째 파라미터 사용 
+
+
   
   
 ------------------------------------------------------------------------------------------------
@@ -78,7 +85,158 @@
   2) **async/await** : promise로 반환하는 것들 앞에 await을 붙여서 비동기로 실행되는 것들을 끝날 때 까지 기다리는 형태의 패턴. 
   
 
+### Context
+: context는 기존에 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할수 있다.<br>
+일반적인 React 애플리케이션에서 데이터는 부모->자식에게 props를 통해 전달되지만, 애플리케이션 안의 여러 컴포넌트들에 전해줘야 하는 props의 경우 이 과정이 번거롭다.<br>
+그러나 context를 이용하면, 트리 단계마다 명시적으로 props를 넘겨주지 않아도 많은 컴포넌트가 값을 공유할 수 있다. 
+
+* 주의할 점
+```js
+function App() {
+  return (
+   <div className="App">
+     <UserProvider>
+       <UserInfo></UserInfo>
+       <UserLogin></UserLogin>
+     </UserProvider>
+     <h1>DIVIDER</h1>
+     <UserProvider>
+     <MailList></MailList>
+     </UserProvider>
+  </div> 
+  );
+}
+```
+위와 같이 UserProvider Context를 분리하여 쓰게 되면, MailList는 위의 다른 UserProvider와는 같은 context를 공유하지 않는다.실제로 updateUser 메서드를 실행했을때 MailList가 갱신이 안되는 걸 확인할 수 있다. <br>
+결론 : 이렇게 분리해서 쓸 수 없다. > 지역적인 context. <br>
+또한 여러개의 context를 공유하고 싶을 때는 provider안에 provider를 넣어야하는데 이렇게 되면 구조가 복잡해진다. <br> 
+-> 이래서 나온 개념이 Redux! <br>
+
+
+
+### Redux
+: 모든 컴포넌트가 '전역적으로' 유지해야 하는 상태.  
+: 시작전 npm install --save redux react-redux <br>
+: react를 시작할때 제일먼저 알아야 할 것 -> Reducer(이벤트핸들러 같은, 이벤트를 처리해주는)
+: Reducer는 전체 컨텍스트를 제어하는 단순 함수(모든 함수는 return이 있다) > 이 함수의 입력,출력값을 뭘까? <br>
+ - 입력값 : state, action(어떠한 정보를 어떻게 처리할 것인지)<br>
+ - 출력값 : 최종적으로 유지할 state(immutable) <br>
+ 
+ [1] Reducer를 만들어라 : Reducer 준비 (countReducer.js) <br>
+
+```js
+// reducer는 순수함수. 
+
+// 맨 처음에 내가 유지해야하는 값. undefined면 안되니까. 
+const initState = {count:0} 
+// 만약 state에 해당하는 파라미터가 있다면 그것을 쓰고, 아니면 기본 파라미터로 initState를 써라 
+function countReducer(state = initState,action){
+    console.log("countRedcuer is running..." , state, action)
+    // do somthing    
+    return state
+}
+export default countReducer
+```
+[2] Store을 만들어라 : index.js 수정(App.js의 상위) <br>
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import countReducer from "./reducers/countReducer"
+
+// 이  store는 모든 action이 발생하면 countRedcuer로 간다. 
+const store = createStore(countReducer)
+
+ReactDOM.render(
+    // Provider로 감싸 이 안의 내용(<app />)이 children이 된다. 
+    <Provider store={store}>
+        <App />
+    </Provider>
+    ,
+    document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+```
+이 상태로 실행하게 되면 countReducer가 실행된다. <br>
+컴포넌트가 리덕스의 영향을 받고 싶으면 이야기를 해줘야함. '나는 Store랑 연결되어 있어!' > Connect !  <br>
+
+[3] 컴포넌트를 만들어 : 컴포넌트가 store를 쓰려면 connect를 써야함.  <br>
+
+```js
+import React from 'react'
+import {connect} from 'react-redux'
+
+const CountDisplay = (props) => {
+
+    console.log('CoutDisPlay : ', props)
+return(
+    <h1>COUNT</h1>
+)
+}
+
+export default connect()(CountDisplay)
+```
+
+이렇게 실행하게 되면 <br>
+![image](https://user-images.githubusercontent.com/48176963/72487691-2d7f1b80-3852-11ea-9378-0153e1f7c8d4.png)
+
+Connect하면 Dispatch(함수)가 생김. Dispatch로 action을 전달 할 수 있고 action은 Reducer를 실행시킨다. <br>
+
+```js
+const mapStateToProps = (state) => {
+// state가 들어오면 나는 어떤 property로 바꿔줄건지  
+    console.log("mapStateToProps is running....", state)
+    return state
+}
+
+// mapStateToProps를 넣기 전에는 dispatch만 생김(보낼때 생기는것)
+// mapStateToProps를 넣으면 이 함수에 의해 파라미터로 들어오는 state가 props의 peroperty가 된다. 
+export default connect(mapStateToProps)(CountDisplay)
+```
+
+### Redux remind 
+yesterday : reducer가 하나 = state가 하나 <br>
+today : reducer가 두개 = state가 두개 <br> 
+So, 컴포넌트에서 받을때 어떤 reducer의 state를 내가 받아야 하는지를 처리해야함. <br>
+
+store는 하나인데 reducer가 많다. 그럼 어떻게 처리 해야 될까? > action이 모든 reducer에게 다 뿌려짐 > 그럼 Reducer들은 이 action이 나에게 맞는 action인가? 구분해야함 > Reducer여러개를 묶어줌 (index.js에서 combineReducer사용) <br>
+countReducer.js
+```js
+const initState = {count:0}
+
+// 만약 state에 해당하는 파라미터가 있다면 그것을 쓰고, 아니면 기본 파라미터로 initState를 써라 
+export default function countReducer(state = initState, action) {
+
+    const {type, payload} = action
+
+    if(type !== "COUNTER") {
+        return state
+    }
+
+    if(payload ==='INC') {
+        return {count: state.count+1}
+    }else if(payload =='DEC'){
+        return {count: state.count-1}
+    }
+
+    console.log("IN countReducer.js...", action)
+
+    return state
+
+}
+}
+```
+reducer의 type이 'COUNTER'면 실행하는 countReducer 
 
 
 
 
+button을 누르면 action을 던져야 함 > Hooks를 사용해보자 > useDispach() <br>
