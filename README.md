@@ -1,4 +1,4 @@
-## React Example in class(2020-01-02 ~ )
+## React Example in class(2020-01-02 ~ 2020-01-17)
 
 예제를 이용한 함수형 컴포넌트와 클래스형 컴포넌트의 이해, Hook의 사용법
 
